@@ -11,7 +11,6 @@ add_fuzz_test(fuzztest "fuzztest.cpp")
 
 add_library(sut STATIC
     stubs/src/mocks.c
-    stubs/src/wrappers.c
     tools/bg_setenv.c
     tools/bg_envtools.c
     env/env_api.c
