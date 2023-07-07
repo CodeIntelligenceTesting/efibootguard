@@ -1,8 +1,6 @@
 
 #include <fuzzer/FuzzedDataProvider.h>
 #include <cifuzz/cifuzz.h>
-#include <thread>
-#include <sys/wait.h>
 #include <iostream>
 
 extern "C" {
@@ -11,15 +9,7 @@ extern "C" {
     #include "envdata.h"
 }
 
-
 #define BUFFER_LENGTH 256
-
-
-static void toCharArray(const uint8_t* bytes, size_t size, char* charArray) {
-    for (size_t i = 0; i < size; ++i) {
-        charArray[i] = static_cast<char>(bytes[i]);
-    }
-}
 
 FUZZ_TEST(const uint8_t *data, size_t size) {
     FuzzedDataProvider fuzzed_data(data, size);
