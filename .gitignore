@@ -101,3 +101,8 @@ __pycache__
 ### Completion ###
 completion/bash
 completion/zsh
+
+
+fuzztest_inputs/
+crash-*
+.cifuzz-*

@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Fuzzing Debug",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/.cifuzz-build/libfuzzer/address+undefined/fuzztest",
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "environment": [
+            {
+                "name": "ASAN_SYMBOLIZER_PATH",
+                "value": "/usr/bin/llvm-symbolizer"
+            },
+            {
+                "name": "NO_CIFUZZ",
+                "value": "1"
+            },
+            {
+                "name": "ASAN_OPTIONS",
+                "value": "halt_on_error=0"
+            }
+        ],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            }
+        ],
+
+      }
+    ]
+  }
+  
