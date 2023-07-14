@@ -1,0 +1,2 @@
+#define ENV_MEM_USERVARS 32
+#define ENV_NUM_CONFIG_PARTS 8

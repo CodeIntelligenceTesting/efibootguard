@@ -18,12 +18,12 @@
 ## A file containing input language keywords or other interesting byte
 ## sequences.
 ## See https://llvm.org/docs/LibFuzzer.html#dictionaries
-#dict: path/to/dictionary.dct
+dict: dic.dict
 
 ## Command-line arguments to pass to libFuzzer.
 ## See https://llvm.org/docs/LibFuzzer.html#options
-#engine-args:
-# - -rss_limit_mb=4096
+engine-args:
+ - -rss_limit_mb=4096
 
 ## Maximum time to run fuzz tests. The default is to run indefinitely.
 #timeout: 30m

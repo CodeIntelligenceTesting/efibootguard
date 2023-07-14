@@ -5,12 +5,14 @@ find_package(cifuzz)
 enable_fuzz_testing()
 
 set(CMAKE_CXX_STANDARD 11)
-add_compile_options(-O0 -g)
+add_compile_options(-O0 -g -fno-sanitize=undefined)
+add_link_options(-fuse-ld=lld)
 
 add_fuzz_test(fuzztest "fuzztest.cpp")
 
 add_library(sut STATIC
-    stubs/src/mocks.c
+    mocks/src/wrappers.cpp
+    mocks/src/mocks.c
     tools/bg_setenv.c
     tools/bg_envtools.c
     env/env_api.c
@@ -24,10 +26,10 @@ add_library(sut STATIC
 )
 
 target_include_directories(sut PUBLIC
-    stubs/include
+    mocks/include
     tools
     include
     .cifuzz-build/libfuzzer/address+undefined/base_c/include
 )
 
-target_link_libraries(fuzztest PRIVATE sut)
+target_link_libraries(fuzztest PRIVATE sut "-Wl,--wrap=ped_device_probe_all,--wrap=mount_partition,--wrap=unmount_partition,--wrap=open_config_file,--wrap=ped_device_get_next") 

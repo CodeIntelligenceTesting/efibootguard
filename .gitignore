@@ -106,3 +106,5 @@ completion/zsh
 fuzztest_inputs/
 crash-*
 .cifuzz-*
+slow-*
+timeout-*
