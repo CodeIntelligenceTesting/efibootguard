@@ -58,7 +58,7 @@ extern "C" {
         // }
 
         FILE *file = tmpfile();
-        std::string data = &strings[fuzzed_data->ConsumeIntegralInRange<size_t>(0, strings.size() - 1)][0];
+        std::string data = fuzzed_data->ConsumeBytesAsString( fuzzed_data->ConsumeIntegralInRange<size_t>(0, 1000));
         fwrite(data.c_str(), sizeof(char), data.size(), file);
         rewind(file);
         return file;

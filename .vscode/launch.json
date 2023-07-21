@@ -6,7 +6,10 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/.cifuzz-build/libfuzzer/address+undefined/fuzztest",
-        "args": [],
+        "args": [
+            "${workspaceFolder}/.cifuzz-corpus/fuzztest/",
+            // "${workspaceFolder}/fuzztest_inputs/hilarious_chickadee"
+        ],
         "cwd": "${workspaceFolder}",
         "environment": [
             {
@@ -19,18 +22,18 @@
             },
             {
                 "name": "ASAN_OPTIONS",
-                "value": "halt_on_error=0"
+                "value": "halt_on_error=1:detect_leaks=0"
             }
         ],
         "externalConsole": false,
-        "MIMode": "gdb",
-        "setupCommands": [
-            {
-                "description": "Enable pretty-printing for gdb",
-                "text": "-enable-pretty-printing",
-                "ignoreFailures": true
-            }
-        ],
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
 
       }
     ]
